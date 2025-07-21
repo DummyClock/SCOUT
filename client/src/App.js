@@ -116,7 +116,7 @@ function App() {
             <Typography variant="h6">Filet</Typography>
             <div>
               <Typography variant="h5">TOTAL</Typography>
-              <Typography variant="h3">120</Typography>
+              <Typography variant="h3">320</Typography>
             </div>
           </div>
         </AccordionSummary>
@@ -129,8 +129,8 @@ function App() {
             //onChange={handleSalesCategory} (replace)
             aria-label="sales-category"
             >
-              <ToggleButton value="summary" aria-label="summary">
-                <Typography>Summary</Typography>
+              <ToggleButton value="overview" aria-label="overview">
+                <Typography>Overview</Typography>
               </ToggleButton>
               <ToggleButton value="by-product" aria-label="by-product">
                 <Typography>By Product</Typography>
@@ -139,7 +139,7 @@ function App() {
 
 
 
-            {/** Table (summary)*/}
+            {/** Table (Overview)*/}
             <TableContainer component={Paper}>
               <Table size="small" aria-label="sales data table">
                 <TableBody>
@@ -154,33 +154,137 @@ function App() {
                   </TableRow>
                   <TableRow>
                     <TableCell component="th" scope="row">Promo Freed</TableCell>
-                    <TableCell align="right">175</TableCell>
+                    <TableCell align="right">10</TableCell>
+                  </TableRow>
+                  {/** Total */}
+                  <TableRow style={{ fontWeight: 'bold', backgroundColor: '#f5f5f5' }}>
+                    <TableCell component="th" scope="row" style={{ fontWeight: 'bold' }}>Total</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{145 + 175 + 10}</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
             </TableContainer>
 
-            {/** Table (by product)*/}
+            {/** Table (By Product)*/}
             <TableContainer component={Paper}>
               <Table size="small" aria-label="sales data table">
                 <TableHead  style={{ fontWeight: 'bold', backgroundColor: '#f0f0f0' }}>
                   <TableRow>
                     <TableCell>Product</TableCell>
                     <TableCell align="right">Sold</TableCell>
-                    <TableCell align="right">Waste</TableCell>
+                    <TableCell align="right">Wasted</TableCell>
+                    <TableCell align="right">Promo'd</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {/* Example data */}
                   <TableRow>
-                    <TableCell component="th" scope="row">Original Sandwich</TableCell>
+                    <TableCell component="th" scope="row">Sandwich - CFA</TableCell>
                     <TableCell align="right">145</TableCell>
                     <TableCell align="right">25</TableCell>
+                    <TableCell align="right">5</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell component="th" scope="row">Spicy Sandwich</TableCell>
+                    <TableCell component="th" scope="row">Sandwich - CFA Deluxe w/ American</TableCell>
                     <TableCell align="right">175</TableCell>
                     <TableCell align="right">75</TableCell>
+                    <TableCell align="right">5</TableCell>
+                  </TableRow>
+                  {/** Total */}
+                  <TableRow style={{ fontWeight: 'bold', backgroundColor: '#f5f5f5' }}>
+                    <TableCell component="th" scope="row" style={{ fontWeight: 'bold' }}>Total</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{145 + 175}</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{25 + 75}</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{5 + 5}</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+
+
+            {/** Table (Daypart- Overview)*/}
+            <TableContainer component={Paper}>
+              <Table size="small" aria-label="sales data table">
+                <TableHead  style={{ fontWeight: 'bold', backgroundColor: '#f0f0f0' }}>
+                  <TableRow>
+                    <TableCell></TableCell>
+                    <TableCell align="right">Breakfast</TableCell>
+                    <TableCell align="right">Lunch</TableCell>
+                    <TableCell align="right">Afternoon</TableCell>
+                    <TableCell align="right">Dinner</TableCell>
+                    <TableCell align="right">Total</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {/* Example data */}
+                  <TableRow>
+                    <TableCell component="th" scope="row">Sold</TableCell>
+                    <TableCell align="right">-</TableCell>
+                    <TableCell align="right">70</TableCell>
+                    <TableCell align="right">25</TableCell>
+                    <TableCell align="right">45</TableCell>
+                    <TableCell align="right">145</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="th" scope="row">Wasted</TableCell>
+                    <TableCell align="right">-</TableCell>
+                    <TableCell align="right">100</TableCell>
+                    <TableCell align="right">45</TableCell>
+                    <TableCell align="right">25</TableCell>
+                    <TableCell align="right">175</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="th" scope="row">Promo Freed</TableCell>
+                    <TableCell align="right">-</TableCell>
+                    <TableCell align="right">4</TableCell>
+                    <TableCell align="right">3</TableCell>
+                    <TableCell align="right">3</TableCell>
+                    <TableCell align="right">10</TableCell>
+                  </TableRow>
+                  {/** Total */}
+                  <TableRow style={{ fontWeight: 'bold', backgroundColor: '#f5f5f5' }}>
+                    <TableCell component="th" scope="row" style={{ fontWeight: 'bold' }}>Total</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>-</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{145}</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{175}</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{10}</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{}</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+
+            {/** Table (Daypart- By Product)*/}
+            <TableContainer component={Paper}>
+              <Table size="small" aria-label="sales data table">
+                <TableHead  style={{ fontWeight: 'bold', backgroundColor: '#f0f0f0' }}>
+                  <TableRow>
+                    <TableCell>Product</TableCell>
+                    <TableCell align="right">Sold</TableCell>
+                    <TableCell align="right">Wasted</TableCell>
+                    <TableCell align="right">Promo'd</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {/* Example data */}
+                  <TableRow>
+                    <TableCell component="th" scope="row">Sandwich - CFA</TableCell>
+                    <TableCell align="right">145</TableCell>
+                    <TableCell align="right">25</TableCell>
+                    <TableCell align="right">5</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="th" scope="row">Sandwich - CFA Deluxe w/ American</TableCell>
+                    <TableCell align="right">175</TableCell>
+                    <TableCell align="right">75</TableCell>
+                    <TableCell align="right">5</TableCell>
+                  </TableRow>
+                  {/** Total */}
+                  <TableRow style={{ fontWeight: 'bold', backgroundColor: '#f5f5f5' }}>
+                    <TableCell component="th" scope="row" style={{ fontWeight: 'bold' }}>Total</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{145 + 175}</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{25 + 75}</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{5 + 5}</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
