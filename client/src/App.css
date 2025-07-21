@@ -26,3 +26,22 @@
   width: 100%;
   margin: 14px;
 }
+
+.MuiTableContainer-root {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .MuiTableCell-root {
+    padding: 8px;
+  }
+  
+  .MuiTableCell-root:first-child {
+    padding-left: 16px;
+  }
+  
+  .MuiTableCell-root:last-child {
+    padding-right: 16px;
+  }
+}

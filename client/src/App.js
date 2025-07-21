@@ -2,15 +2,14 @@ import "./App.css";
 import React from 'react';
 import axios from "axios";
 import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
+  Accordion, AccordionSummary, AccordionDetails,
   Button,
   Drawer,
   MenuItem,
+  Paper,
   Select,
-  ToggleButton,
-  ToggleButtonGroup,
+  Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
+  ToggleButton, ToggleButtonGroup,
   Typography
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -137,8 +136,58 @@ function App() {
                 <Typography>By Product</Typography>
               </ToggleButton>
             </ToggleButtonGroup>
+
+
+
+            {/** Table (summary)*/}
+            <TableContainer component={Paper}>
+              <Table size="small" aria-label="sales data table">
+                <TableBody>
+                  {/* Example data */}
+                  <TableRow>
+                    <TableCell component="th" scope="row">Sold</TableCell>
+                    <TableCell align="right">145</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="th" scope="row">Wasted</TableCell>
+                    <TableCell align="right">175</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="th" scope="row">Promo Freed</TableCell>
+                    <TableCell align="right">175</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+
+            {/** Table (by product)*/}
+            <TableContainer component={Paper}>
+              <Table size="small" aria-label="sales data table">
+                <TableHead  style={{ fontWeight: 'bold', backgroundColor: '#f0f0f0' }}>
+                  <TableRow>
+                    <TableCell>Product</TableCell>
+                    <TableCell align="right">Sold</TableCell>
+                    <TableCell align="right">Waste</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {/* Example data */}
+                  <TableRow>
+                    <TableCell component="th" scope="row">Original Sandwich</TableCell>
+                    <TableCell align="right">145</TableCell>
+                    <TableCell align="right">25</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="th" scope="row">Spicy Sandwich</TableCell>
+                    <TableCell align="right">175</TableCell>
+                    <TableCell align="right">75</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+
           </div>
-      </AccordionDetails>
+        </AccordionDetails>
       </Accordion>
     </div>
   );
