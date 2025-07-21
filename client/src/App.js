@@ -3,7 +3,6 @@ import React from 'react';
 import axios from "axios";
 import {
   Accordion, AccordionSummary, AccordionDetails,
-  Button,
   Drawer,
   MenuItem,
   Paper,
@@ -14,9 +13,33 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { CollapsibleRow } from "./CollapsibleRow";
 
 const REACT_APP_SERVER_PORT = process.env.REACT_APP_SERVER_PORT;
 const restNo = "04162";
+const daypartByProductData = [
+  {
+    name: "Sandwich - CFA",
+    total: { sold: 145, wasted: 25, promo: 5 },
+    dayparts: [
+      { name: "Breakfast", sold: 40, wasted: 5, promo: 1 },
+      { name: "Lunch", sold: 60, wasted: 10, promo: 2 },
+      { name: "Afternoon", sold: 25, wasted: 5, promo: 1 },
+      { name: "Dinner", sold: 20, wasted: 5, promo: 1 }
+    ]
+  },
+  {
+    name: "Sandwich - CFA Deluxe w/ American",
+    total: { sold: 175, wasted: 75, promo: 5 },
+    dayparts: [
+      { name: "Breakfast", sold: 50, wasted: 15, promo: 1 },
+      { name: "Lunch", sold: 70, wasted: 30, promo: 2 },
+      { name: "Afternoon", sold: 35, wasted: 20, promo: 1 },
+      { name: "Dinner", sold: 20, wasted: 10, promo: 1 }
+    ]
+  }
+];
+
 
 function App() {
   // StateVariables
@@ -27,6 +50,8 @@ function App() {
   const handleSalesCategory = (e, newCategory) => {
     setSalesCategory(newCategory);
   };
+
+  
 
   // Run functions after components mount
   React.useEffect(() => {
@@ -256,8 +281,8 @@ function App() {
 
             {/** Table (Daypart- By Product)*/}
             <TableContainer component={Paper}>
-              <Table size="small" aria-label="sales data table">
-                <TableHead  style={{ fontWeight: 'bold', backgroundColor: '#f0f0f0' }}>
+              <Table size="small" aria-label="collapsible sales data table">
+                <TableHead style={{ fontWeight: 'bold', backgroundColor: '#f0f0f0' }}>
                   <TableRow>
                     <TableCell>Product</TableCell>
                     <TableCell align="right">Sold</TableCell>
@@ -266,25 +291,22 @@ function App() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {/* Example data */}
-                  <TableRow>
-                    <TableCell component="th" scope="row">Sandwich - CFA</TableCell>
-                    <TableCell align="right">145</TableCell>
-                    <TableCell align="right">25</TableCell>
-                    <TableCell align="right">5</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="th" scope="row">Sandwich - CFA Deluxe w/ American</TableCell>
-                    <TableCell align="right">175</TableCell>
-                    <TableCell align="right">75</TableCell>
-                    <TableCell align="right">5</TableCell>
-                  </TableRow>
-                  {/** Total */}
+                  {daypartByProductData.map((row) => (
+                    <CollapsibleRow key={row.name} row={row} />
+                  ))}
+
+                  {/* Totals */}
                   <TableRow style={{ fontWeight: 'bold', backgroundColor: '#f5f5f5' }}>
-                    <TableCell component="th" scope="row" style={{ fontWeight: 'bold' }}>Total</TableCell>
-                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{145 + 175}</TableCell>
-                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{25 + 75}</TableCell>
-                    <TableCell align="right" style={{ fontWeight: 'bold' }}>{5 + 5}</TableCell>
+                    <TableCell style={{ fontWeight: 'bold' }}>Total</TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>
+                      {daypartByProductData.reduce((sum, r) => sum + r.total.sold, 0)}
+                    </TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>
+                      {daypartByProductData.reduce((sum, r) => sum + r.total.wasted, 0)}
+                    </TableCell>
+                    <TableCell align="right" style={{ fontWeight: 'bold' }}>
+                      {daypartByProductData.reduce((sum, r) => sum + r.total.promo, 0)}
+                    </TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
