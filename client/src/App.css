@@ -1,6 +1,8 @@
-* {
-  //max-width: 600px;
+/** {
+  max-width: 600px;
 }
+*/
+
 #parent:not(#banner) {
   display: flex;
   flex-direction: column;
