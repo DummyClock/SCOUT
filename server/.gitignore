@@ -1,0 +1,16 @@
+# Ignore environment variables
+.env
+
+# Ignore local database files
+*.sqlite
+*.db
+
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Temp files
+.DS_Store
