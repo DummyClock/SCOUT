@@ -69,8 +69,8 @@ function App() {
           <ToggleButton value="Protein" aria-label="protein">
             <Typography>Protein</Typography>
           </ToggleButton>
-          <ToggleButton value="Salad" aria-label="salad">
-            <Typography>Salad</Typography>
+          <ToggleButton value="Prep" aria-label="Prep">
+            <Typography>Prep</Typography>
           </ToggleButton>
           <ToggleButton value="Produce" aria-label="produce">
             <Typography>Produce</Typography>
@@ -96,31 +96,49 @@ function App() {
           <MenuItem value="strips">Strips</MenuItem>
         </Select>
       </div>
-      
-      
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => alert(`Hey how's it going\n ${salesMixData}`)}
-      >
-        Click Me
-      </Button>
 
-      <Accordion style={{ marginTop: 20 }}>
+      {/** Collapsable Cards (WIP) */}
+      <Accordion 
+        style={{ 
+          marginTop: 20,
+          width: '95%',
+          maxWidth: '600px',
+          margin: '20px auto',
+          boxShadow: '0 4px 2px rgba(0,0,0,0.25)' 
+        }}
+      >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <Typography variant="h6">This is an Accordion</Typography>
+          <div style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center" }}>
+            <p>image here</p>
+            <Typography variant="h6">Filet</Typography>
+            <div>
+              <Typography variant="h5">TOTAL</Typography>
+              <Typography variant="h3">120</Typography>
+            </div>
+          </div>
         </AccordionSummary>
 
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget. It means something very important...maybe
-          </Typography>
-        </AccordionDetails>
+          <div class = "data-dsiplay-button">
+            <ToggleButtonGroup
+            //value={salesCategory} (replace)
+            exclusive
+            //onChange={handleSalesCategory} (replace)
+            aria-label="sales-category"
+            >
+              <ToggleButton value="summary" aria-label="summary">
+                <Typography>Summary</Typography>
+              </ToggleButton>
+              <ToggleButton value="by-product" aria-label="by-product">
+                <Typography>By Product</Typography>
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </div>
+      </AccordionDetails>
       </Accordion>
     </div>
   );
