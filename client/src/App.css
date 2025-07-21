@@ -1,0 +1,23 @@
+#parent:not(#banner) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;  
+}
+
+#banner {
+  display: flex; 
+  justify-content: space-evenly;
+  align-items: center; 
+  width: 100%;
+  margin: 14px;
+  background-color: rgb(162, 162, 162);
+}
+
+#sales-category {
+  display: flex; 
+  justify-content: space-evenly;
+  align-items: flex-start; 
+  width: 100%;
+  margin: 14px;
+}
