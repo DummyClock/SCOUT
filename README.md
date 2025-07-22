@@ -69,6 +69,7 @@ If you're using VS Code, do **Crtl + `** to access a Bash cdl Terminal.
    a. cd ../server/src  (Go to the src folder inside your server folder)
    b. type 'sqlite3 db.sqlite'
    c. You can run various commands here (i.e. '.tables' to see all the created tables)
+   d. type '.exit' to escape
 
 
 
