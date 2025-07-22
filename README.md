@@ -20,7 +20,7 @@ If you're using VS Code, do **Crtl + `** to access a Bash cdl Terminal.
 2. Install all dependencies (Type **npm install**)
 3. Create a *.env* as such ↓↓↓
         +-------------------------------------------------------------+
-        | # Make sure this mirrors PORT in ../server/src/.env         |
+        | # Make sure this mirrors PORT in ../server/.env         |
         | REACT_APP_SERVER_PORT=5000                                  |   
         +-------------------------------------------------------------+
 4. Type **npm start** to launch
@@ -42,13 +42,13 @@ If you're using VS Code, do **Crtl + `** to access a Bash cdl Terminal.
 4. Type **node .\src\index.js**
 
 ### Installing SQLite3 (Windows Instructions)
-https://www.sqlite.org/download.html
-Precompiled Binaries for Windows
-1. sqlite-tools-win-x64-*.zip
-2. Extract file
-3. Move file to Root directory ("C:\")
-4. *Optional:* Rename the file as sqlite3
-5. Add path to system environment variables
+- This step is meant for debugging the SQLite DB
+1. Go to https://www.sqlite.org/download.html
+2. Under "Precompiled Binaries for Windows", install "sqlite-tools-win-x64-*.zip"
+3. Extract file
+4. Move extracted file to Root directory ("C:\")
+5. *Optional:* Rename the file as sqlite3
+6. Add path to system environment variables
    a. Copy the full file path of the new file 
    b. Tap the "Windows" button
    c. Type in "Edit Environment Variables" and click the first result
@@ -56,8 +56,8 @@ Precompiled Binaries for Windows
    e. Under the "System variables" section, double click "Path"
    f. Click on an empty cell, and paste the full file path
    g. Click "Ok"
-6. Tap the "Windows" button && Type "Cld" && Click first result
-7. In the console type "sqlite3" && Tap enter. If install correctly you should see the following message as output
+7. Tap the "Windows" button && Type "Cld" && Click first result
+8. In the console type "sqlite3" && Tap enter. If install correctly you should see the following message as output
 +---------------------------------------------------------------+
 | SQLite version 3.50.3 2025-07-17 13:25:10                      |
 | Enter ".help" for usage hints.                                 |
@@ -65,6 +65,11 @@ Precompiled Binaries for Windows
 | Use ".open FILENAME" to reopen on a persistent database.       |
 | sqlite>                                                        |
 +---------------------------------------------------------------+
+9. Bonus: After you're server is live, you can check the database files by typing the following
+   a. cd ../server/src  (Go to the src folder inside your server folder)
+   b. type 'sqlite3 db.sqlite'
+   c. You can run various commands here (i.e. '.tables' to see all the created tables)
+
 
 
 ### That's it! You'll be able to start development!
