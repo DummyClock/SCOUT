@@ -94,7 +94,15 @@ function App() {
       </div>
 
       <div id="product-cards">
-        <ProductCard productName={"Filets"} productData={"test test test"}></ProductCard>
+        {salesMixData?.data && 
+          Object.keys(salesMixData.data).map((productCategory) => (
+            <ProductCard 
+              key={productCategory}
+              productName={productCategory}
+              productData={salesMixData.data[productCategory]}
+            />
+          ))
+        }
       </div>
 
     </div>
