@@ -3,11 +3,7 @@ import {
   Box,
   Collapse,
   IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
+  Table, TableBody, TableCell, TableHead, TableRow,
   Typography
 } from '@mui/material';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
