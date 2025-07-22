@@ -58,7 +58,7 @@ export function ProductCard({productName, productData}) {
             minWidth: '420px',
             maxWidth: '600px',
             margin: '20px auto',
-            boxShadow: '0 4px 2px rgba(0,0,0,0.25)' 
+            boxShadow: '0 4px 2px rgba(0,0,0,0.25)',
             }}
         >
             <AccordionSummary
@@ -77,19 +77,26 @@ export function ProductCard({productName, productData}) {
             </AccordionSummary>
 
             <AccordionDetails>
-                <div class = "data-dsiplay-button">
+                <div class = "data-display">
                     <ToggleButtonGroup
-                    value={cardType}
-                    exclusive
-                    onChange={changeCardType}
-                    aria-label="sales-category"
+                        value={cardType}
+                        exclusive
+                        onChange={changeCardType}
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginBottom: 2,
+                            '& .MuiToggleButton-root': {
+                                px: 3
+                            }
+                        }}
                     >
-                    <ToggleButton value="overview" aria-label="overview">
-                        <Typography>Overview</Typography>
-                    </ToggleButton>
-                    <ToggleButton value="by-product" aria-label="by-product">
-                        <Typography>By Product</Typography>
-                    </ToggleButton>
+                        <ToggleButton value="overview" aria-label="overview">
+                            <Typography>Overview</Typography>
+                        </ToggleButton>
+                        <ToggleButton value="by-product" aria-label="by-product">
+                            <Typography>By Product</Typography>
+                        </ToggleButton>
                     </ToggleButtonGroup>
 
 

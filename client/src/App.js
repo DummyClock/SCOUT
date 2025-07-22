@@ -18,6 +18,7 @@ function App() {
   // StateVariables
   const [salesCategory, setSalesCategory] = React.useState('Protein');  // default to use 'Protein'
   const [salesMixData, setSalesMixData] = React.useState(null);
+  const [menuItems, setMenuItems] = React.useState(['summary']);
 
   // State functions
   const handleSalesCategory = (e, newCategory) => {
@@ -37,6 +38,10 @@ function App() {
       });
 
       setSalesMixData(response.data);
+      if (response.data?.data) {  // Dynamically fill dropdown menu based on data passed in
+        const items = ['summary', ...Object.keys(response.data.data)];
+        setMenuItems(items);
+      }
       console.log(response.data);
     } catch (error) {
       console.error("Error fetching sales mix data:", error);
@@ -65,16 +70,16 @@ function App() {
           <ToggleButton value="Protein" aria-label="protein">
             <Typography>Protein</Typography>
           </ToggleButton>
-          <ToggleButton value="Prep" aria-label="Prep">
+          <ToggleButton value="Prep" aria-label="Prep" disabled>
             <Typography>Prep</Typography>
           </ToggleButton>
-          <ToggleButton value="Produce" aria-label="produce">
+          <ToggleButton value="Produce" aria-label="produce" disabled>
             <Typography>Produce</Typography>
           </ToggleButton>
       </ToggleButtonGroup>
 
       <div id="sales-data-filter">
-        {/** HTML version */}
+        {/** HTML version 
         <select name="sales-data" id="sales-data">
           <option value="summary">Summary</option>
           <option value="filets">Filets</option>
@@ -82,14 +87,15 @@ function App() {
           <option value="spicy">Spicy</option>
           <option value="strips">Strips</option>
         </select> 
+        */}
 
         {/** MUI version */}
         <Select id="sales-data" defaultValue="summary">
-          <MenuItem value="summary">Summary</MenuItem>
-          <MenuItem value="filets">Filets</MenuItem>
-          <MenuItem value="nuggets">Nuggets</MenuItem>
-          <MenuItem value="spicy">Spicy</MenuItem>
-          <MenuItem value="strips">Strips</MenuItem>
+          {menuItems.map((item) => (
+            <MenuItem key={item} value={item}>
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </MenuItem>
+          ))}
         </Select>
       </div>
 
