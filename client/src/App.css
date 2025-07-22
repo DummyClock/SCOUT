@@ -3,6 +3,8 @@
 }
 */
 
+@import './fonts.css';
+
 #parent:not(#banner) {
   display: flex;
   flex-direction: column;
@@ -17,6 +19,8 @@
   width: 100%;
   margin: 14px;
   background-color: rgb(162, 162, 162);
+  font-family: 'Caecilia', sans-serif;
+  font-weight: 700;
 }
 
 #sales-category {

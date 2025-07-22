@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'Caecilia';
+    src: url('./assets/fonts/Caecilia/CaeciliaLTPro45Light.TTF') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia';
+    src: url('./assets/fonts/Caecilia/CaeciliaLTPro46LightIt.TTF') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia';
+    src: url('./assets/fonts/Caecilia/CaeciliaLTPro55Roman.TTF') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia';
+    src: url('./assets/fonts/Caecilia/CaeciliaLTPro56RomanIt.TTF') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia';
+    src: url('./assets/fonts/Caecilia/CaeciliaLTPro75Bold.TTF') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia';
+    src: url('./assets/fonts/Caecilia/CaeciliaLTPro76BoldIt.TTF') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia';
+    src: url('./assets/fonts/Caecilia/CaeciliaLTPro85Heavy.TTF') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia';
+    src: url('./assets/fonts/Caecilia/CaeciliaLTPro86HeavyIt.TTF') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src:
+        url('./assets/fonts/Apercu/apercu-regular.woff2') format('woff2'),
+        url('./assets/fonts/Apercu/apercu-regular.woff') format('woff'),
+        url('./assets/fonts/Apercu/apercu-regular.ttf') format('truetype');
+    font-weight:  400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src: url('./assets/fonts/Apercu/apercu_regular_italic_pro.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src:
+        url('./assets/fonts/Apercu/apercu-medium.woff2') format('woff2'),
+        url('./assets/fonts/Apercu/apercu-medium.woff') format('woff'),
+        url('./assets/fonts/Apercu/apercu-medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src: url('./assets/fonts/Apercu/apercu_medium_italic_pro.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src:
+        url('./assets/fonts/Apercu/apercu-bold.woff2') format('woff2'),
+        url('./assets/fonts/Apercu/apercu-bold.woff') format('woff'),
+        url('./assets/fonts/Apercu/apercu-bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src: url('./assets/fonts/Apercu/apercu_bold_italic_pro.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
