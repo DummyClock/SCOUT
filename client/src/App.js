@@ -94,7 +94,7 @@ function App() {
       </div>
 
       <div id="product-cards">
-        <ProductCard></ProductCard>
+        <ProductCard productName={"Filets"} productData={"test test test"}></ProductCard>
       </div>
 
     </div>
