@@ -17,9 +17,8 @@
   /* justify-content: space-between; */
   align-items: center; 
   width: 100%;
-  margin-bottom: 14px;
   background-color: rgb(192, 192, 192);
-  font-family: 'Caecilia', sans-serif;
+  font-family: 'Caecilia', serif;
   font-weight: 700;
   font-size: 1.5em;
   padding: 15.5px 20px;
@@ -69,13 +68,53 @@
   border-radius: 50%;
 }
 
-#sales-category {
-  display: flex; 
-  justify-content: space-evenly;
-  align-items: flex-start; 
+.category-nav-container{
+  margin: 0;
+  padding: 8px 0;
   width: 100%;
-  margin: 14px;
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
 }
+
+#sales-category-filter {
+  background-color: #e4e4e4;
+  border-radius: 9999px;
+  display: inline-flex;
+  border: 1px solid #acacac;
+}
+
+#sales-category-filter .MuiToggleButton-root {
+  border: none;
+  border-radius: 9999px;
+  padding: 4px 32px;
+  font-size: 1.3em;
+  font-family: 'Apercu', san-serif;
+  color: #333;
+  text-transform: none;
+  background: transparent;
+  transition: background 0.5s ease;
+}
+
+#sales-category-filter .MuiToggleButton-root.Mui-selected {
+  background-color: #acacac; /* Adjust as needed */
+  color: #333;
+}
+
+#sales-category-filter .MuiToggleButton-root:hover {
+  background-color: #c9c9c9;
+  transition: background 0.5s ease;
+}
+
+#sales-data-filter {
+  margin: 0;
+  padding: 8px 0;
+  width: 100%;
+  background-color: #e4e4e4;
+  display: flex;
+  justify-content: center;
+}
+
 
 .MuiTableContainer-root {
   margin-top: 1rem;
