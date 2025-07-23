@@ -13,7 +13,7 @@ const initDatabase = () => {
                 CREATE TABLE IF NOT EXISTS PRODUCT(
                     pid INTEGER PRIMARY KEY AUTOINCREMENT,
                     pname TEXT NOT NULL,
-                    yield INTEGER DEFAULT 1,
+                    yield FLOAT DEFAULT 1,
                     date_added DATE NOT NULL
                 );
 
@@ -42,6 +42,17 @@ const initDatabase = () => {
                     PRIMARY KEY (pid, date),
                     FOREIGN KEY (pid) REFERENCES PRODUCT(pid)
                 );
+
+                CREATE TABLE IF NOT EXISTS PRODUCT_PRODUCT_RATIO (
+                    pid1 INTEGER NOT NULL,
+                    pid2 INTEGER NOT NULL,
+                    ratio FLOAT NOT NULL,
+                    quantity_unit TEXT NOT NULL,
+                    PRIMARY KEY (pid1, pid2),
+                    FOREIGN KEY (pid1) REFERENCES PRODUCT(pid),
+                    FOREIGN KEY (pid2) REFERENCES PRODUCT(pid)
+                );
+
             `;
 
             // Run the multiple SQL statements (don't use db.run())
