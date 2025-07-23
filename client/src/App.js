@@ -68,22 +68,18 @@ function App() {
         </div>
       </div>
 
-      <ToggleButtonGroup id = "sales-category-filter"
-          value={salesCategory}
-          exclusive
-          onChange={handleSalesCategory}
-          aria-label="sales-category"
-        >
-          <ToggleButton value="Protein" aria-label="protein">
-            <Typography>Protein</Typography>
-          </ToggleButton>
-          <ToggleButton value="Prep" aria-label="Prep" disabled>
-            <Typography>Prep</Typography>
-          </ToggleButton>
-          <ToggleButton value="Produce" aria-label="produce" disabled>
-            <Typography>Produce</Typography>
-          </ToggleButton>
-      </ToggleButtonGroup>
+      <div className="category-nav-container">
+        <ToggleButtonGroup id = "sales-category-filter"
+            value={salesCategory}
+            exclusive
+            onChange={handleSalesCategory}
+            aria-label="sales-category"
+          >
+            <ToggleButton disableRipple value="Protein" aria-label="protein">Protein</ToggleButton>
+            <ToggleButton disableRipple value="Prep" aria-label="Prep">Prep</ToggleButton>
+            <ToggleButton disableRipple value="Produce" aria-label="produce" disabled>Produce</ToggleButton>
+        </ToggleButtonGroup>
+      </div>
 
       <div id="sales-data-filter">
         {/** HTML version 
