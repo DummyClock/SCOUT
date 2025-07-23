@@ -69,7 +69,7 @@ initDatabase()
           for (const keyword of keywords) {
             console.log(` * Searching ${subcategory} - ${keyword}`);
             const query1 = `
-                  SELECT pname, sold * yield AS total_sold, promo_count
+                  SELECT pname, sold * yield AS total_sold, promo_count * yield AS total_promo
                   FROM SALES
                   NATURAL JOIN PRODUCT
                   WHERE date BETWEEN ? AND ? AND pname LIKE ?;
@@ -123,7 +123,7 @@ initDatabase()
               // Access subcategory directly from salesMixData
               salesMixData[subcategory][0][row.pname] = { // Changed this line
                 sold: row.total_sold || 0,
-                promo: row.promo_count || 0,
+                promo: row.total_promo || 0,
                 wasted: 0,                    // currently hardcoded !!!!
                 daypart: daypartData
               };
