@@ -7,9 +7,13 @@ import {
   Typography,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import productImagery from '../assets/images';
 import { CollapsibleRow } from "./CollapsibleRow";
 
 export function ProductCard({productName, productData}) {
+    // Get Product Image
+    const productImage = productImagery[productName.toLowerCase()] || productImagery.filets;
+
     // State variables
     const [total, setTotal] = React.useState("--");
     const [sold, setSold] = React.useState("--");
@@ -67,7 +71,7 @@ export function ProductCard({productName, productData}) {
                 id="panel1-header"
             >
                 <div style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center" }}>
-                    <p>image here</p>
+                    <img src={productImage.src} alt={productName} style={{width: "110px", height: "110px", borderRadius: "50%", objectFit: "cover", backgroundColor: productImage.color}}/>
                     <Typography variant="h6">{productName}</Typography>
                     <div>
                     <Typography variant="h5">TOTAL</Typography>
