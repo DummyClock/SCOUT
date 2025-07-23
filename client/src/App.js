@@ -9,6 +9,7 @@ import {
   Typography
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
+import ScoutLogo from './assets/images/scout_logo.png';
 import { ProductCard } from "./components/ProductCard";
 
 const REACT_APP_SERVER_PORT = process.env.REACT_APP_SERVER_PORT;
@@ -56,9 +57,15 @@ function App() {
   return (
     <div id='parent' style={{ paddingLeft: 0, paddingRight: 0}}>
       <div id="banner">
-        <p>SCOUT</p>
-        <h2>{restNo}</h2>
-        <button><SettingsIcon /></button>
+        <div id="banner-left">
+          <img src={ScoutLogo} alt="Sales Console for Observing Usage Totals" className="banner-icon"/>
+          <span className="banner-text">SCOUT</span>
+        </div>
+        <div id="banner-center"></div>
+        <div id="banner-right">
+          <h2 className="banner-text">{restNo}</h2>
+          <button className="banner-icon circular"><SettingsIcon /></button>
+        </div>
       </div>
 
       <ToggleButtonGroup id = "sales-category-filter"

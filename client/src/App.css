@@ -13,14 +13,60 @@
 }
 
 #banner {
-  display: flex; 
-  justify-content: space-evenly;
+  display: flex;
+  /* justify-content: space-between; */
   align-items: center; 
   width: 100%;
-  margin: 14px;
-  background-color: rgb(162, 162, 162);
+  margin-bottom: 14px;
+  background-color: rgb(192, 192, 192);
   font-family: 'Caecilia', sans-serif;
   font-weight: 700;
+  font-size: 1.5em;
+  padding: 15.5px 20px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+#banner * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+#banner-right, #banner-left{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#banner-left{
+  flex-shrink: 0;
+}
+#banner-center {
+  flex-grow: 1;
+}
+
+#banner-right{
+  justify-content: flex-end;
+}
+
+.banner-text{
+  transform: translateY(2px);
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+.banner-icon{
+  height: 34px;
+  width: 34px;
+}
+
+.circular{
+  border-radius: 50%;
 }
 
 #sales-category {
