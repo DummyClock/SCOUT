@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require('express');
 const cors = require('cors');
 const initDatabase = require('./init_db');
+const db = require('./db');
 const app = express();
 const PORT = process.env.PORT;
 
@@ -28,60 +29,113 @@ initDatabase()
       res.json({ message: 'Hello, this is the server'});
     });
 
-    /** Placeholder API to fetch salesMix */
+    /**API to fetch salesMix */
     app.post('/salesMix', async (req, res) => {
       try{
-        const category = req.category;
-        const startDate = req.startDate;
-        const endDate = req.endDate;
+        let { category,startDate, endDate } = req.body; // revert 'let' to 'const' later
 
-        /**
-         * Add future code to pick keywords (read from a file)
-         * Use keywords to searchDB() -> have logic that'll query all data between those dates
-         */
+        // TEMPORARY (DELETE LATER) --------------------
+        startDate = "2025-07-23"; 
+        endDate = "2025-07-23";
 
-        // Hard-coded placeholder for PROTEIN category
-        let query = {
-          "Filets": [
-            {
-              "Sandwich - CFA": {
-                "sold": 60,
-                "promo": 2,
-                "wasted": 0,
-                "daypart":{"breakfast": 0, "lunch": 30, "afternoon": 5, "dinner": 25},
-              },
-              "Sandwich - CFA Deluxe No Cheese": {
-                "sold": 60,
-                "promo": 2,
-                "wasted": 0,
-                "daypart":{"breakfast": 0, "lunch": 30, "afternoon": 5, "dinner": 25},
-              },
-              "Sandwich - CFA Deluxe w/American": {
-                "sold": 60,
-                "promo": 2,
-                "wasted": 0,
-                "daypart":{"breakfast": 0, "lunch": 30, "afternoon": 5, "dinner": 25},
-              },
-              "Sandwich - CFA Deluxe w/Colby Jack": {
-                "sold": 60,
-                "promo": 2,
-                "wasted": 0,
-                "daypart":{"breakfast": 0, "lunch": 30, "afternoon": 5, "dinner": 25},
-              },
-              "Sandwich - CFA Deluxe w/Pepper Jack": {
-                "sold": 60,
-                "promo": 2,
-                "wasted": 0,
-                "daypart":{"breakfast": 0, "lunch": 30, "afternoon": 5, "dinner": 25},
-              },
+        // Keywords (Hardcoded for now, in the future should be read from a file)
+        const keyword_collection = {
+          Protein: {
+            Filets: ['%Sandwich%CFA%', 'Filet - CFA'],
+            Spicy: ['%Sandwich%Spicy%', 'Filet - Spicy'],
+            Nuggets: ['Nuggets, %'],
+            Strips: ['Strips, %']
+          },
+          Prep: {}
+        };
+
+        // Get array of keys (subcategories)
+        const subcategories = Object.keys(keyword_collection[category]);
+
+        // Create Object to later convert into JSON
+        // Initialize salesMixData directly as an empty object or based on the structure you desire,
+        // without the outer 'category' key.
+        let salesMixData = {}; // Changed this line
+
+        // Loop through each keyword in the product_keyword_list (from the keyword collection) based on the category matched
+        for (const subcategory of subcategories) {
+          // Initialize subcategory array within the salesMixData
+          salesMixData[subcategory] = [{}]; // Changed this line
+
+          // Get the keywords array for this subcategory
+          const keywords = keyword_collection[category][subcategory];
+
+          // Loop through each keyword in the array
+          for (const keyword of keywords) {
+            console.log(` * Searching ${subcategory} - ${keyword}`);
+            const query1 = `
+                  SELECT pname, sold * yield AS total_sold, promo_count
+                  FROM SALES
+                  NATURAL JOIN PRODUCT
+                  WHERE date BETWEEN ? AND ? AND pname LIKE ?;
+              `;
+
+            const query2 = `
+              SELECT pname, sold_and_promo_count * yield AS total_sold_and_promo
+              FROM SALES_DAYPART SD
+              JOIN SALES S ON S.pid = SD.pid
+              JOIN PRODUCT P ON P.pid = SD.pid
+              WHERE SD.date BETWEEN  ? AND ? AND pname LIKE ?;     
+            `;
+
+            // Run queries && store result
+            const result1 = await new Promise((resolve, reject) => {
+              db.all(query1, [startDate, endDate, keyword], (err, rows) => {
+                if (err){
+                  reject(err);
+                  console.log("Query 1 failed")
+                } 
+                else resolve(rows);
+              });
+            });
+            const result2 = await new Promise((resolve, reject) => {
+              db.all(query2, [startDate, endDate, keyword], (err, rows) => {
+                if (err){
+                  reject(err);
+                  console.log("Query 2 failed")
+                } 
+                else resolve(rows);
+              });
+            });
+
+
+            // Process result1 and create structured data
+            for (const row of result1) {
+              // Process daypart data from result2
+              const daypartData = result2
+                .filter(r => r.pname === row.pname)
+                .reduce((acc, curr) => {
+                  acc[curr.daypart_name] = curr.total_sold_and_promo;
+                  return acc;
+                }, {
+                  breakfast: 0,
+                  lunch: 0,
+                  afternoon: 0,
+                  dinner: 0
+                });
+
+              // Add product data to the structure
+              // Access subcategory directly from salesMixData
+              salesMixData[subcategory][0][row.pname] = { // Changed this line
+                sold: row.total_sold || 0,
+                promo: row.promo_count || 0,
+                wasted: 0,                    // currently hardcoded !!!!
+                daypart: daypartData
+              };
             }
-          ]
+          }
         }
+        console.log('Sales Mix Data:', JSON.stringify(salesMixData, null, 2));
 
         /** JSON return */
         res.json({
           message: 'Sales Mix Retrived from DB',
-          data: query
+          data: JSON.parse(JSON.stringify(salesMixData))
         });
 
       }

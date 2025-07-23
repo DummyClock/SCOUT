@@ -1,0 +1,37 @@
+// Hard-coded placeholder for PROTEIN category
+    let sampleJSON = {
+              "Filets": [
+                {
+                  "Sandwich - CFA": {
+                    "sold": 60,
+                    "promo": 2,
+                    "wasted": 0,
+                    "daypart":{"breakfast": 0, "lunch": 30, "afternoon": 5, "dinner": 25},
+                  },
+                  "Sandwich - CFA Deluxe No Cheese": {
+                    "sold": 60,
+                    "promo": 2,
+                    "wasted": 0,
+                    "daypart":{"breakfast": 0, "lunch": 30, "afternoon": 5, "dinner": 25},
+                  },
+                  "Sandwich - CFA Deluxe w/American": {
+                    "sold": 60,
+                    "promo": 2,
+                    "wasted": 0,
+                    "daypart":{"breakfast": 0, "lunch": 30, "afternoon": 5, "dinner": 25},
+                  },
+                  "Sandwich - CFA Deluxe w/Colby Jack": {
+                    "sold": 60,
+                    "promo": 2,
+                    "wasted": 0,
+                    "daypart":{"breakfast": 0, "lunch": 30, "afternoon": 5, "dinner": 25},
+                  },
+                  "Sandwich - CFA Deluxe w/Pepper Jack": {
+                    "sold": 60,
+                    "promo": 2,
+                    "wasted": 0,
+                    "daypart":{"breakfast": 0, "lunch": 30, "afternoon": 5, "dinner": 25},
+                  },
+                }
+              ]
+            }
