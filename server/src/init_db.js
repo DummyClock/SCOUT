@@ -59,7 +59,11 @@ const initDatabase = () => {
                 (2, 'Sandwich - CFA Deluxe No Cheese', 1, DATE('now')),
                 (3, 'Sandwich - CFA Deluxe w/American', 1, DATE('now')),
                 (4, 'Sandwich - CFA Deluxe w/Colby Jack', 1, DATE('now')),
-                (5, 'Sandwich - CFA Deluxe w/Pepper Jack', 1, DATE('now'));
+                (5, 'Sandwich - CFA Deluxe w/Pepper Jack', 1, DATE('now')),
+                (6, 'Sandwich - Spicy Deluxe w/Colby Jack', 1, DATE('now')),
+                (7, 'Sandwich - Spicy Deluxe w/Pepper Jack', 1, DATE('now')),
+                (8, 'Nuggets, 30 Count', 30, DATE('now')),
+                (9, 'Strips, 4 Count', 4, DATE('now'));
 
                 -- Insert sample sales
                 INSERT OR IGNORE INTO SALES (pid, date, sold, promo_count) VALUES
@@ -67,7 +71,11 @@ const initDatabase = () => {
                 (2, DATE('now'), 60, 2),
                 (3, DATE('now'), 60, 2),
                 (4, DATE('now'), 60, 2),
-                (5, DATE('now'), 60, 2);
+                (5, DATE('now'), 60, 2),
+                (6, DATE('now'), 45, 3),
+                (7, DATE('now'), 38, 2),
+                (8, DATE('now'), 25, 1),
+                (9, DATE('now'), 20, 0);
 
                 -- Insert sample daypart data
                 INSERT OR IGNORE INTO SALES_DAYPART (pid, date, daypart_name, sold_and_promo_count) VALUES
@@ -90,7 +98,15 @@ const initDatabase = () => {
                 (5, DATE('now'), 'breakfast', 0),
                 (5, DATE('now'), 'lunch', 30),
                 (5, DATE('now'), 'afternoon', 5),
-                (5, DATE('now'), 'dinner', 25);
+                (5, DATE('now'), 'dinner', 25),
+                (6, DATE('now'), 'lunch', 25),
+                (6, DATE('now'), 'dinner', 20),
+                (7, DATE('now'), 'lunch', 20),
+                (7, DATE('now'), 'dinner', 18),
+                (8, DATE('now'), 'lunch', 15),
+                (8, DATE('now'), 'dinner', 10),
+                (9, DATE('now'), 'lunch', 12),
+                (9, DATE('now'), 'dinner', 8);
 
                 -- Insert sample waste data
                 INSERT OR IGNORE INTO WASTE (pid, date, unit_quantity) VALUES
@@ -98,7 +114,11 @@ const initDatabase = () => {
                 (2, DATE('now'), 0),
                 (3, DATE('now'), 0),
                 (4, DATE('now'), 0),
-                (5, DATE('now'), 0);
+                (5, DATE('now'), 0),
+                (6, DATE('now'), 1),
+                (7, DATE('now'), 2),
+                (8, DATE('now'), 0),
+                (9, DATE('now'), 1);
             `;
 
             // Run the multiple SQL statements (don't use db.run())

@@ -130,7 +130,7 @@ initDatabase()
             }
           }
         }
-        console.log('Sales Mix Data:', JSON.stringify(salesMixData, null, 2));
+        //console.log('Sales Mix Data:', JSON.stringify(salesMixData, null, 2));
 
         /** JSON return */
         res.json({
