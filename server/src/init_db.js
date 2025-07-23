@@ -53,6 +53,52 @@ const initDatabase = () => {
                     FOREIGN KEY (pid2) REFERENCES PRODUCT(pid)
                 );
 
+                -- Insert sample products
+                INSERT OR IGNORE INTO PRODUCT (pid, pname, yield, date_added) VALUES
+                (1, 'Sandwich - CFA', 1, DATE('now')),
+                (2, 'Sandwich - CFA Deluxe No Cheese', 1, DATE('now')),
+                (3, 'Sandwich - CFA Deluxe w/American', 1, DATE('now')),
+                (4, 'Sandwich - CFA Deluxe w/Colby Jack', 1, DATE('now')),
+                (5, 'Sandwich - CFA Deluxe w/Pepper Jack', 1, DATE('now'));
+
+                -- Insert sample sales
+                INSERT OR IGNORE INTO SALES (pid, date, sold, promo_count) VALUES
+                (1, DATE('now'), 60, 2),
+                (2, DATE('now'), 60, 2),
+                (3, DATE('now'), 60, 2),
+                (4, DATE('now'), 60, 2),
+                (5, DATE('now'), 60, 2);
+
+                -- Insert sample daypart data
+                INSERT OR IGNORE INTO SALES_DAYPART (pid, date, daypart_name, sold_and_promo_count) VALUES
+                (1, DATE('now'), 'breakfast', 0),
+                (1, DATE('now'), 'lunch', 30),
+                (1, DATE('now'), 'afternoon', 5),
+                (1, DATE('now'), 'dinner', 25),
+                (2, DATE('now'), 'breakfast', 0),
+                (2, DATE('now'), 'lunch', 34),
+                (2, DATE('now'), 'afternoon', 9),
+                (2, DATE('now'), 'dinner', 25),
+                (3, DATE('now'), 'breakfast', 0),
+                (3, DATE('now'), 'lunch', 30),
+                (3, DATE('now'), 'afternoon', 5),
+                (3, DATE('now'), 'dinner', 25),
+                (4, DATE('now'), 'breakfast', 0),
+                (4, DATE('now'), 'lunch', 30),
+                (4, DATE('now'), 'afternoon', 5),
+                (4, DATE('now'), 'dinner', 25),
+                (5, DATE('now'), 'breakfast', 0),
+                (5, DATE('now'), 'lunch', 30),
+                (5, DATE('now'), 'afternoon', 5),
+                (5, DATE('now'), 'dinner', 25);
+
+                -- Insert sample waste data
+                INSERT OR IGNORE INTO WASTE (pid, date, unit_quantity) VALUES
+                (1, DATE('now'), 0),
+                (2, DATE('now'), 0),
+                (3, DATE('now'), 0),
+                (4, DATE('now'), 0),
+                (5, DATE('now'), 0);
             `;
 
             // Run the multiple SQL statements (don't use db.run())
