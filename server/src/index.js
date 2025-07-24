@@ -43,8 +43,8 @@ initDatabase()
           Protein: {
             Filets: ['%Sandwich%CFA%', 'Filet - CFA'],
             Spicy: ['%Sandwich%Spicy%', 'Filet - Spicy'],
-            Nuggets: ['Nuggets, %'],
-            Strips: ['Strips, %']
+            Nuggets: ['Nuggets, %', '%Nugget Tray%'],
+            Strips: ['Strips, %', '%Strips Tray%']
           },
           Prep: {}
         };

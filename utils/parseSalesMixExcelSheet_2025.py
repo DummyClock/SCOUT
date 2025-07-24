@@ -3,6 +3,40 @@ import os
 import pandas as pd
 import sqlite3
 
+# Function to auto-determine yield value
+def generateYieldValue (pname):
+    number_pattern = r'\d+\.?\d*'
+    match_number = re.search(number_pattern, pname)
+    if match_number:
+        return match_number.group(0) # Returns the number as a string
+
+    # If no number is found, check for specific "Tray" items
+    tray_pattern = r"^(Nugget Tray|Chicken\s*Strips Tray),\s*(Small|Medium|Large)$"
+    match_tray = re.fullmatch(tray_pattern, pname)
+
+    if match_tray:
+        # Hardcoded: Extract the tray type and size using capturing groups (eventually should be read from a file instead)
+        tray_type = match_tray.group(1)
+        tray_size = match_tray.group(2)
+
+        if tray_type == "Nugget Tray":
+            if tray_size == "Small":
+                return 64.0
+            elif tray_size == "Medium":
+                return 120.0  
+            elif tray_size == "Large":
+                return 200.0 
+        elif tray_type == "Chicken Strips Tray":
+            if tray_size == "Small":
+                return 24.0  
+            elif tray_size == "Medium":
+                return 45.0  
+            elif tray_size == "Large":
+                return 75.0  
+        return 1.0 # Default for unhandled case
+    # return the default yield
+    return 1.0
+
 # Path to db file
 current_dir = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(current_dir, '..', 'server', 'src', 'db.sqlite')
@@ -13,8 +47,8 @@ keyword_collection = {
     "Protein": {
         "Filets": [r".*Sandwich.*CFA.*", r"Filet - CFA"],
         "Spicy": [r".*Sandwich.*Spicy.*", r"Filet - Spicy"],
-        "Nuggets": [r"Nuggets, .*"],
-        "Strips": [r"Strips, .*"]
+        "Nuggets": [r"Nuggets, .*", r".*Nugget Tray.*"],
+        "Strips": [r"Strips, .*", r".*Strips Tray.*"]
     },
     "Prep": {
     }
@@ -98,7 +132,7 @@ with sqlite3.connect(db_path) as conn:
                         # Note: pid is auto-incremented, omit it from the INSERT statement
                         cur.execute("""
                             INSERT INTO PRODUCT (pname, yield, date_added) VALUES (?, ?, DATE('now', '-1 day'))
-                        """, (pname, 1)) # 'yield' is hardcoded to 1, 
+                        """, (pname, generateYieldValue(pname))) 
                         pid = cur.lastrowid # Get the ID of the last inserted row
 
                     if pid is None:

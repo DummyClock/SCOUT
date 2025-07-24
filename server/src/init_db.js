@@ -9,8 +9,6 @@ const initDatabase = () => {
 
         // Example: A basic check to ensure the DB object is ready
         if (db) {
-            // You might want to run a very light query to confirm connectivity
-            // For example, selecting 1 from a dummy table or PRAGMA user_version;
             db.get("SELECT 1", (err, row) => {
                 if (err) {
                     console.error('Error connecting to database:', err.message);
