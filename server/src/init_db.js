@@ -43,7 +43,7 @@ const initDatabase = () => {
                     FOREIGN KEY (pid) REFERENCES PRODUCT(pid)
                 );
 
-                CREATE TABLE IF NOT EXISTS PRODUCT_PRODUCT_RATIO (
+                CREATE TABLE IF NOT EXISTS YIELD_RATIO (
                     pid1 INTEGER NOT NULL,
                     pid2 INTEGER NOT NULL,
                     ratio FLOAT NOT NULL,
@@ -51,6 +51,13 @@ const initDatabase = () => {
                     PRIMARY KEY (pid1, pid2),
                     FOREIGN KEY (pid1) REFERENCES PRODUCT(pid),
                     FOREIGN KEY (pid2) REFERENCES PRODUCT(pid)
+                );
+
+                CREATE TABLE IF NOT EXISTS PREFERRED_PRODUCTS (
+                    pname TEXT NOT NULL,
+                    preferred_pid INTEGER NOT NULL,
+                    PRIMARY KEY (pname),
+                    FOREIGN KEY (preferred_pid) REFERENCES PRODUCT(pid)
                 );
 
                 -- Insert sample products
