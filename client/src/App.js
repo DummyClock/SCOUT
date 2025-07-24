@@ -9,6 +9,7 @@ import {
   Typography
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { Grid } from "@mui/material";
 import ScoutLogo from './assets/images/scout_logo.png';
 import { ProductCard } from "./components/ProductCard";
 
@@ -103,15 +104,19 @@ function App() {
       </div>
 
       <div id="product-cards">
-        {salesMixData?.data && 
-          Object.keys(salesMixData.data).map((productCategory) => (
-            <ProductCard 
-              key={productCategory}
-              productName={productCategory}
-              productData={salesMixData.data[productCategory]}
-            />
-          ))
-        }
+        <Grid container spacing ={2} justifyContent="center">
+          {salesMixData?.data && 
+            Object.keys(salesMixData.data).map((productCategory) => (
+              <Grid item xs={12} sm={6} md={4} key={productCategory}>
+                <ProductCard 
+                  key={productCategory}
+                  productName={productCategory}
+                  productData={salesMixData.data[productCategory]}
+                />
+                </Grid>
+            ))
+          }
+        </Grid>
       </div>
 
     </div>
