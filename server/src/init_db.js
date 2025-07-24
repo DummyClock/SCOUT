@@ -1,6 +1,36 @@
 /**
- * Create tables if they don't exist yet
+ * Wrapper Node.js for the db.js file; ensures it can be async.
  */
+
+const db = require('./db');
+
+const initDatabase = () => {
+    return new Promise((resolve, reject) => {
+
+        // Example: A basic check to ensure the DB object is ready
+        if (db) {
+            // You might want to run a very light query to confirm connectivity
+            // For example, selecting 1 from a dummy table or PRAGMA user_version;
+            db.get("SELECT 1", (err, row) => {
+                if (err) {
+                    console.error('Error connecting to database:', err.message);
+                    reject(new Error('Failed to connect to database: ' + err.message));
+                } else {
+                    console.log('Database connection established successfully.');
+                    resolve();
+                }
+            });
+        } else {
+            reject(new Error("Database object 'db' is not initialized."));
+        }
+    });
+};
+
+module.exports = initDatabase;
+
+
+/**
+// Promiser Wrapper + Initializing DB with new tables and new data
 const db = require('./db');
 
 const initDatabase = () => {
@@ -143,3 +173,4 @@ const initDatabase = () => {
 };
 
 module.exports = initDatabase;
+ */
