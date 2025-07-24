@@ -68,14 +68,14 @@ initDatabase()
           // Loop through each keyword in the array
           for (const keyword of keywords) {
             console.log(` * Searching ${subcategory} - ${keyword}`);
-            const query1 = `
+            const daily_query = `
                   SELECT pname, sold * yield AS total_sold, promo_count * yield AS total_promo
                   FROM SALES
                   NATURAL JOIN PRODUCT
                   WHERE date BETWEEN ? AND ? AND pname LIKE ?;
               `;
 
-            const query2 = `
+            const daypart_query = `
               SELECT pname, sold_and_promo_count * yield AS total_sold_and_promo
               FROM SALES_DAYPART SD
               JOIN SALES S ON S.pid = SD.pid
@@ -85,19 +85,19 @@ initDatabase()
 
             // Run queries && store result
             const result1 = await new Promise((resolve, reject) => {
-              db.all(query1, [startDate, endDate, keyword], (err, rows) => {
+              db.all(daily_query, [startDate, endDate, keyword], (err, rows) => {
                 if (err){
                   reject(err);
-                  console.log("Query 1 failed")
+                  console.log("Daily Query failed")
                 } 
                 else resolve(rows);
               });
             });
             const result2 = await new Promise((resolve, reject) => {
-              db.all(query2, [startDate, endDate, keyword], (err, rows) => {
+              db.all(daypart_query, [startDate, endDate, keyword], (err, rows) => {
                 if (err){
                   reject(err);
-                  console.log("Query 2 failed")
+                  console.log("Daypart Query failed")
                 } 
                 else resolve(rows);
               });

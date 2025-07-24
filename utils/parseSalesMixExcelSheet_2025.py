@@ -63,7 +63,7 @@ combined_pattern = '|'.join(all_patterns)
 
 # Store the column numbers for Product_name, Sold, & Promo
 PNAME_IDX = 0
-PROMO_IDX = 5
+PROMO_IDX = 9
 SOLD_IDX = 14
 
 # Connect to the database using a 'with' statement for proper resource management
