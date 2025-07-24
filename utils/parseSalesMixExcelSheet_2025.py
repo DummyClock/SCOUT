@@ -150,4 +150,4 @@ with sqlite3.connect(db_path) as conn:
 
             # Commit changes after each file is processed
             conn.commit() 
-    print("All Excel files processed. Data committed to the database.")
+            print("All Excel files processed. Data committed to the database.")
