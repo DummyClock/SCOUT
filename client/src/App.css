@@ -62,6 +62,21 @@
 .banner-icon{
   height: 34px;
   width: 34px;
+  border: none;
+  background-color: transparent;
+}
+
+@keyframes spinOnce {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spinOnce 0.5s ease;
 }
 
 .circular{

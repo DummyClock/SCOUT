@@ -9,7 +9,7 @@ import {
   Typography
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { Grid } from "@mui/material";
+import { Grid, IconButton } from "@mui/material";
 import ScoutLogo from './assets/images/scout_logo.png';
 import { ProductCard } from "./components/ProductCard";
 
@@ -21,12 +21,19 @@ function App() {
   const [salesCategory, setSalesCategory] = React.useState('Protein');  // default to use 'Protein'
   const [salesMixData, setSalesMixData] = React.useState(null);
   const [menuItems, setMenuItems] = React.useState(['summary']);
+  const [spin, setSpin] = React.useState(false);
 
   // State functions
   const handleSalesCategory = (e, newCategory) => {
     setSalesCategory(newCategory);
   };
 
+  
+  // Settings Icon Spinning Feature
+  const settingsClicked = () => {
+    setSpin(true);
+    setTimeout(() => setSpin(false), 500);
+  }
 
   // Run functions after components mount
   React.useEffect(() => {
@@ -65,7 +72,9 @@ function App() {
         <div id="banner-center"></div>
         <div id="banner-right">
           <h2 className="banner-text">{restNo}</h2>
-          <button className="banner-icon circular"><SettingsIcon /></button>
+          <IconButton disableRipple onClick={settingsClicked} className="banner-icon">
+            <SettingsIcon className={`${spin ? "spin" : ""}`} style={{fontSize: "32px"}}/>
+          </IconButton>
         </div>
       </div>
 
