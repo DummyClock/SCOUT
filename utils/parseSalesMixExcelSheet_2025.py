@@ -5,7 +5,7 @@ import sqlite3
 
 # Path to db file
 current_dir = os.path.dirname(os.path.abspath(__file__))
-db_path = os.path.join(current_dir, '..', 'db', 'data.db')
+db_path = os.path.join(current_dir, '..', 'server', 'src', 'db.sqlite')
 db_path = os.path.abspath(db_path)
 
 # Read keywords from a file (hardcode it for now, but will read from a file in the future)
@@ -87,7 +87,7 @@ with sqlite3.connect(db_path) as conn:
 
                     # --- PID and PRODUCT/PREFERRED_PRODUCTS Logic ---
                     # 1. Check if product already exists in PRODUCT table
-                    cur.execute("SELECT pid FROM PRODUCT WHERE pname = ?", (pname,))
+                    cur.execute("SELECT pid FROM PRODUCT WHERE pname = ?", (pname, ))
                     result = cur.fetchone()
 
                     pid = None
