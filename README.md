@@ -41,6 +41,16 @@ If you're using VS Code, do **Crtl + `** to access a Bash cdl Terminal.
         +-------------------------------------------------------------+
 4. Type **node .\src\index.js**
 
+### Preparing Support Scripts
+1. Navigate to utils folder (Type **cd .\utils**)
+2. Create a *auth.py* as such ↓↓↓
+        +-------------------------------------------------------------+
+        | USERNAME = "insert CFAHome username here"                   |
+        | PASSWORD = "insert CFAHome password here"                   |
+        | PIN = "insert POS pin here"                                 |
+        |                                                             |
+        +-------------------------------------------------------------+
+        
 ### Installing SQLite3 (Windows Instructions)
 - This step is meant for debugging the SQLite DB
 1. Go to https://www.sqlite.org/download.html
