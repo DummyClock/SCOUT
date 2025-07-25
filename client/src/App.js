@@ -6,10 +6,10 @@ import {
   MenuItem,
   Select,
   ToggleButton, ToggleButtonGroup,
+  Grid, IconButton,
   Typography
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { Grid, IconButton } from "@mui/material";
 import ScoutLogo from './assets/images/scout_logo.png';
 import { ProductCard } from "./components/ProductCard";
 
