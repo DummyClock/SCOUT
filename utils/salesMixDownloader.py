@@ -69,6 +69,19 @@ def downloadSalesMix(startDate=None):
             time.sleep(10)
 
             # If it asks for SMS...fetch code from email
+            if driver.find_element(By.XPATH, "//h2[text()='Verify with your phone']"):
+                driver.find_element(By.XPATH, "//a[text()='Verify with something else']").click()
+                time.sleep(3)
+                driver.find_element(By.CSS_SELECTOR, '[data-se="okta_email"] a').click()
+                time.sleep(8)
+
+            # If it asks for email verification
+            if driver.find_element(By.XPATH, "//h2[text()='Get a verification email']"):
+                driver.find_element(By.CSS_SELECTOR, 'input.button.button-primary[type="submit"][value="Send me an email"]').click()
+                # Go get link from email
+                time.sleep(50)
+
+
 
             #Enter PIN (ServicePoint)
             driver.find_element(By.ID, "MainContent_txtEchoWindow").send_keys(PIN, Keys.ENTER)
